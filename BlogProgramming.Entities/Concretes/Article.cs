@@ -8,7 +8,7 @@ namespace BlogProgramming.Entities.Concretes
     public class Article:EntityBase,IEntity
     {
         public string Title { get; set; }
-        public string Context { get; set; }
+        public string Content { get; set; }
         public string Thumbnail { get; set; }
         public DateTime Date { get; set; }
         public int WievsCount { get; set; }

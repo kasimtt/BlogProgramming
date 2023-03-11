@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BlogProgramming.Entities.Concretes
 {
-    public class Roles:EntityBase, IEntity
+    public class Role:EntityBase, IEntity
     {
         public string Name { get; set; } 
         public string Description { get; set; }
