@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,7 +29,50 @@ namespace BlogProgramming.DataAccess.Concretes.EntityFramework.Mapping
             builder.Property(c => c.IsActive).IsRequired(true);
             builder.Property(c => c.Note).HasMaxLength(500);
             builder.ToTable("Categories");
+            builder.HasData(
+                new Category
+                {
+                    Id = 1,
+                    Name = "C#",
+                    Description = "C# ile en güncel bilgiler",
+                    CreateDate = DateTime.Now,
+                    CreatedByName = "InitialCreate",
+                    ModifiedDate = DateTime.Now,
+                    ModifiedByName = "InitialCreate",
+                    IsActive = true,
+                    IsDeleted = false,
+                    Note = "C# blog categorisi",
+                
+                 },
+                new Category
+                {
+                    Id = 2,
+                    Name = "C++",
+                    Description = "C++ ile en güncel bilgiler",
+                    CreateDate = DateTime.Now,
+                    CreatedByName = "InitialCreate",
+                    ModifiedDate = DateTime.Now,
+                    ModifiedByName = "InitialCreate",
+                    IsActive = true,
+                    IsDeleted = false,
+                    Note = "C++ blog categorisi",
 
+                },
+                new Category
+                {
+                    Id = 3,
+                    Name = "Java",
+                    Description = "Java ile en güncel bilgiler",
+                    CreateDate = DateTime.Now,
+                    CreatedByName = "InitialCreate",
+                    ModifiedDate = DateTime.Now,
+                    ModifiedByName = "InitialCreate",
+                    IsActive = true,
+                    IsDeleted = false,
+                    Note = "Java blog categorisi",
+                }
+            
+            );
         }
     }
 }

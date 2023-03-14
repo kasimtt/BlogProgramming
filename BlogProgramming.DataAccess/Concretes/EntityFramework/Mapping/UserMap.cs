@@ -18,14 +18,17 @@ namespace BlogProgramming.DataAccess.Concretes.EntityFramework.Mapping
             builder.Property(u => u.Id).ValueGeneratedOnAdd();
             builder.Property(u=>u.FirstName).IsRequired();
             builder.Property(u=>u.FirstName).HasMaxLength(50);
+            builder.Property(u=>u.UserName).IsRequired();
+            builder.Property(u=>u.UserName).HasMaxLength(50);
             builder.Property(u=>u.LastName).IsRequired();
             builder.Property(u=>u.LastName).HasMaxLength(50);
             builder.Property(u=>u.Email).IsRequired();
             builder.Property(u=>u.Email).HasMaxLength(50);
+            builder.HasIndex(u=>u.Email).IsUnique();
             builder.Property(u=>u.PasswordHash).IsRequired();
-            builder.Property(u=>u.PasswordHash).HasMaxLength(250);
+            builder.Property(u => u.PasswordHash).HasColumnType("VARBINARY(500)");
             builder.Property(u=>u.Picture).IsRequired();
-            builder.Property(u => u.Picture).HasMaxLength(200);
+            builder.Property(u => u.Picture).HasMaxLength(250);
             builder.Property(u=>u.Description).HasMaxLength(200);
             builder.HasOne<Role>(u=>u.Role).WithMany(r=>r.Users).HasForeignKey(u=>u.RoleId);
             builder.Property(u => u.CreatedByName).IsRequired(true);
@@ -37,25 +40,27 @@ namespace BlogProgramming.DataAccess.Concretes.EntityFramework.Mapping
             builder.Property(u => u.IsDeleted).IsRequired(true);
             builder.Property(u => u.IsActive).IsRequired(true);
             builder.ToTable("Users");
+            builder.HasData(new User
+            {
+                Id = 1,
+                FirstName = "kasım islam",
+                LastName = "Tatlı",
+                UserName = "kasimtt",
+                Email = "kasimislamtatli@gmail.com",
+                CreateDate = DateTime.Now,
+                CreatedByName = "InitialCreate",
+                ModifiedDate = DateTime.Now,
+                ModifiedByName = "InitialCreate",
+                IsActive = true,
+                IsDeleted = false,
+                Description = "ilk admin",
+                Note = "Otomotik admin",
+                RoleId = 1,
+                PasswordHash = Encoding.ASCII.GetBytes("0192023a7bbd73250516f069df18b500"),
+                Picture = "C:\\Users\\Kasim\\Pictures"
 
+            }) ;
 
-
-
-
-
-            //comment icinde
-            //  builder.HasOne<Article>(c => c.Article).WithMany(a=>a.Comments).HasForeignKey(c=>c.ArticleId);
-
-
-            /*    public string FirstName { get; set; }
-            public string LastName { get; set; }
-            public string Email { get; set; }
-            public byte[] PasswordHash { get; set; }
-            public string Picture { get; set; }
-            public string Description { get; set; }
-            public int RoleId { get; set; }
-            public Role Role { get; set; }
-            public ICollection<Article> Articles { get; set; }    */
         }
     }
 }

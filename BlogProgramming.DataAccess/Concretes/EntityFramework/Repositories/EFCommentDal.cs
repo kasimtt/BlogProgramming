@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BlogProgramming.DataAccess.Concretes.EntityFramework.Repositories
 {
-    public class EFCommentDal :EfEntityRepositoryBase<Comment,BlogProgrammingContext>, ICommentDal
+    public class EfCommentDal :EfEntityRepositoryBase<Comment,BlogProgrammingContext>, ICommentDal
     {
     }
 }
