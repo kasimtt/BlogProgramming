@@ -17,7 +17,7 @@ namespace BlogProgramming.DataAccess.Concretes.EntityFramework.Mapping
 
             builder.HasKey(c => c.Id);
             builder.Property(c=>c.Id).ValueGeneratedOnAdd();
-            builder.Property(c=>c.Text).HasMaxLength(500);
+            builder.Property(c=>c.Text).HasColumnType("NVARCHAR(MAX)");
             builder.Property(c=>c.Text).IsRequired(true);
             builder.Property(c => c.CreatedByName).IsRequired(true);
             builder.Property(c => c.CreatedByName).HasMaxLength(50);

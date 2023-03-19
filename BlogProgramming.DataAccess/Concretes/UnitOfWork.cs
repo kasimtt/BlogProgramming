@@ -2,6 +2,7 @@
 using BlogProgramming.DataAccess.Abstracts;
 using BlogProgramming.DataAccess.Concretes.EntityFramework.Contexts;
 using BlogProgramming.DataAccess.Concretes.EntityFramework.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +11,14 @@ using System.Threading.Tasks;
 
 namespace BlogProgramming.DataAccess.Concretes
 {
-    public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork 
     {
-        private readonly BlogProgrammingContext _context;
+        //private readonly BlogProgrammingContext _context;
 
-        public UnitOfWork(BlogProgrammingContext context)
-        {
-            _context = context;
-        }
+        //public UnitOfWork(BlogProgrammingContext context)
+        //{
+        //    _context = context;
+        //}
 
         private EfArticleDal articleDal;
         private EfCategoryDal categoryDal;    // şimdilik böyle yapıldı ama fluent IoC ile buralar refactor edilecek.
@@ -41,12 +42,12 @@ namespace BlogProgramming.DataAccess.Concretes
 
         public async Task<int> SaveAsync()
         {
-           return await _context.SaveChangesAsync();
+           return await roleDal.SaveAsync(); //burada herhangi bir dal kullanılabilir çünkü hepsi için ortak kullanım vardır.
         }
 
         public async ValueTask DisposeAsync()
         {
-             await _context.DisposeAsync(); 
+             await roleDal.DisposeAsync(); ////burada herhangi bir dal kullanılabilir çünkü hepsi için ortak kullanım vardır.
         }
     }
 }

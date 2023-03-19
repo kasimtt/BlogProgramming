@@ -21,7 +21,7 @@ namespace BlogProgramming.DataAccess.Concretes.EntityFramework.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=LENOVO\MSSQLSERVERKT;Database=ReCapDatabase;Trusted_Connection=true;
+            optionsBuilder.UseSqlServer(@"Server=LENOVO\MSSQLSERVERKT;Database=BlogDb;Trusted_Connection=true;
                                            Connect Timeout=30;MultipleActiveResultSets=True;encrypt=False;");
         }
 

@@ -20,7 +20,6 @@ namespace BlogProgramming.Core.DataAccess.Concretes.EntityFramework
             using (TContext context = new TContext())
             {
                await context.Set<TEntity>().AddAsync(entity);
-
             }
             
         }
@@ -95,6 +94,22 @@ namespace BlogProgramming.Core.DataAccess.Concretes.EntityFramework
             using (TContext context = new TContext())
             {
                 await Task.Run(() => { context.Set<TEntity>().Update(entity); });
+            }
+        }
+
+        public async Task<int> SaveAsync()
+        {
+            using(TContext context = new TContext())
+            {
+               return await context.SaveChangesAsync();
+            }
+        }
+
+        public async Task DisposeAsync()
+        {
+            using(TContext context = new TContext())
+            {
+                await context.DisposeAsync();
             }
         }
     }

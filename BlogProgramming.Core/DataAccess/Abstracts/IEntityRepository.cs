@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,5 +18,7 @@ namespace BlogProgramming.Core.DataAccess.Abstract
         Task UpdateAsync(T entity);
         Task<bool> AnyAsync(Expression<Func<T,bool>> predicate);
         Task<int> CountAsync(Expression<Func<T,bool>> predicate);
+        Task<int> SaveAsync();
+        Task DisposeAsync();
     }
 }
