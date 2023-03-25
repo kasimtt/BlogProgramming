@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BlogProgramming.Core\BlogProgramming.Core.csproj" />
     <ProjectReference Include="..\BlogProgramming.DataAccess\BlogProgramming.DataAccess.csproj" />
     <ProjectReference Include="..\BlogProgramming.Entities\BlogProgramming.Entities.csproj" />

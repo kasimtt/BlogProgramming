@@ -1,4 +1,5 @@
-﻿using BlogProgramming.Core.Utilities.Results.Abstract;
+﻿
+using BlogProgramming.Core.Utilities.Result.Abstract;
 using BlogProgramming.Entities.Concretes;
 using BlogProgramming.Entities.Dtos.Articles;
 using BlogProgramming.Entities.Dtos.Categories;
@@ -14,7 +15,7 @@ namespace BlogProgramming.Business.Abstract
     {
         Task<IDataResult<ArticleDto>> Get(int id);
         Task<IDataResult<ArticleListDto>> GetAll();
-        Task<IDataResult<ArticleListDto>> GetAllByNonDelete(int id);
+        Task<IDataResult<ArticleListDto>> GetAllByNonDelete();
         Task<IDataResult<ArticleListDto>> GetAllByCategory(int categoryId);
         Task<IDataResult<ArticleListDto>> GetAllByNonDeletedAndActive();
         Task<IResult> Add(ArticleAddDto articleAddDto, string createdByName);

@@ -1,0 +1,25 @@
+﻿using BlogProgramming.Core.Utilities.Result.Abstract;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BlogProgramming.Core.Utilities.Result.Concrete
+{
+    public class Result : IResult
+    {
+        // eğer başarı durumunu ve mesajı görmek istersek bu contructoru çalıştırırız
+        public Result(bool success, string message) : this(success)
+        {
+            Message = message;
+        }
+        public Result(bool success) // sadece başarı durumu dönmek istersek bu contructoru döneriz.
+        {
+            Success = success;
+        }
+
+        public bool Success { get; }
+        public string Message { get; }
+    }
+}
